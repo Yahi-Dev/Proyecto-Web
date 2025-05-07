@@ -1,635 +1,533 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog | Nutrición Saludable</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <style>
-        :root {
-            --primary-color: #5D9CEC;
-            --secondary-color: #A0D468;
-            --accent-color: #4FC1E9;
-            --light-color: #F5F7FA;
-            --dark-color: #434A54;
-            --white: #FFFFFF;
-            --soft-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
+      :root {
+        --primary-color: #5d9cec;
+        --secondary-color: #a0d468;
+        --accent-color: #4fc1e9;
+        --light-color: #f5f7fa;
+        --dark-color: #434a54;
+        --white: #ffffff;
+        --soft-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark-color);
-            background-color: var(--light-color);
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        background-color: var(--light-color);
+      }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
 
-        /* Header (igual que en las páginas anteriores) */
-        .top-bar {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 12px 0;
-            font-size: 0.9rem;
+      @media (max-width: 768px) {
+        .dropdown.open .dropdown-menu {
+          display: block;
+          position: static;
+          box-shadow: none;
+          animation: none;
         }
+      }
 
-        .top-bar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+      /* Header (igual que en las páginas anteriores) */
+      .top-bar {
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 12px 0;
+        font-size: 0.9rem;
+      }
+
+      .top-bar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .contact-info {
+        display: flex;
+        gap: 25px;
+        flex-wrap: wrap;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: var(--transition);
+      }
+
+      .contact-item:hover {
+        color: var(--light-color);
+        transform: translateY(-2px);
+      }
+
+      .icon {
+        font-size: 0.9rem;
+        min-width: 16px;
+      }
+
+      .contact-text {
+        white-space: nowrap;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-links a {
+        color: var(--white);
+        transition: var(--transition);
+        font-size: 0.9rem;
+      }
+
+      .social-links a:hover {
+        color: var(--light-color);
+        transform: translateY(-2px);
+      }
+
+      .main-nav {
+        background-color: var(--white);
+        padding: 15px 0;
+        box-shadow: var(--soft-shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .main-nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 101;
+      }
+
+      .logo img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .logo h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .logo h1 span {
+        color: var(--secondary-color);
+        font-weight: 600;
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        cursor: pointer;
+        z-index: 101;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 25px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark-color);
+        font-weight: 500;
+        padding: 5px 0;
+        position: relative;
+        transition: var(--transition);
+        white-space: nowrap;
+      }
+
+      .nav-links a:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: var(--secondary-color);
+        bottom: 0;
+        left: 0;
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      .nav-links a:hover:after {
+        width: 100%;
+      }
+
+      .btn-cita {
+        background-color: var(--secondary-color);
+        color: var(--white);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: var(--transition);
+        box-shadow: var(--soft-shadow);
+        white-space: nowrap;
+      }
+
+      .btn-cita:hover {
+        background-color: #8cc152;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(160, 212, 104, 0.3);
+      }
+
+      /* Blog Hero */
+      .blog-hero {
+        background: linear-gradient(
+          135deg,
+          rgba(93, 156, 236, 0.9) 0%,
+          rgba(160, 212, 104, 0.9) 100%
+        );
+        color: var(--white);
+        text-align: center;
+        padding: 60px 0;
+      }
+
+      .blog-hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+
+      .blog-hero p {
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Blog Content */
+      .blog-section {
+        padding: 50px 0;
+      }
+
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .blog-card {
+        background: var(--white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--soft-shadow);
+        transition: var(--transition);
+      }
+
+      .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .blog-image {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .blog-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .blog-card:hover .blog-image img {
+        transform: scale(1.05);
+      }
+
+      .blog-content {
+        padding: 20px;
+      }
+
+      .blog-meta {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 10px;
+        font-size: 0.85rem;
+        color: #7f8c8d;
+      }
+
+      .blog-meta i {
+        color: var(--secondary-color);
+      }
+
+      .blog-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: var(--dark-color);
+      }
+
+      .blog-content p {
+        color: #7f8c8d;
+        margin-bottom: 15px;
+        font-size: 0.95rem;
+      }
+
+      .read-more {
+        display: inline-block;
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .read-more:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+      }
+
+      /* Blog Sidebar */
+      .blog-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      @media (min-width: 992px) {
+        .blog-container {
+          grid-template-columns: 2fr 1fr;
         }
-
-        .contact-info {
-            display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
+      }
+      @media (max-width: 768px) {
+        .dropdown.open .dropdown-menu {
+          display: block;
+          position: static;
+          box-shadow: none;
+          animation: none;
         }
+      }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
-        }
+      .sidebar {
+        background: var(--white);
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: var(--soft-shadow);
+        height: fit-content;
+      }
 
-        .contact-item:hover {
-            color: var(--light-color);
-            transform: translateY(-2px);
-        }
+      .sidebar-widget {
+        margin-bottom: 30px;
+      }
 
-        .icon {
-            font-size: 0.9rem;
-            min-width: 16px;
-        }
+      .sidebar-widget:last-child {
+        margin-bottom: 0;
+      }
 
-        .contact-text {
-            white-space: nowrap;
-        }
+      .sidebar-widget h3 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--secondary-color);
+        color: var(--dark-color);
+      }
 
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
+      .categories-list {
+        list-style: none;
+      }
 
-        .social-links a {
-            color: var(--white);
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
+      .categories-list li {
+        margin-bottom: 10px;
+      }
 
-        .social-links a:hover {
-            color: var(--light-color);
-            transform: translateY(-2px);
-        }
+      .categories-list a {
+        color: var(--dark-color);
+        text-decoration: none;
+        transition: var(--transition);
+        display: block;
+        padding: 8px 0;
+      }
 
-        .main-nav {
-            background-color: var(--white);
-            padding: 15px 0;
-            box-shadow: var(--soft-shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+      .categories-list a:hover {
+        color: var(--primary-color);
+        padding-left: 10px;
+      }
 
-        .main-nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
+      .categories-list a i {
+        margin-right: 8px;
+        color: var(--secondary-color);
+      }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 101;
-        }
+      .popular-posts {
+        list-style: none;
+      }
 
-        .logo img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+      .popular-post {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+      }
 
-        .logo h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
+      .popular-post:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
 
-        .logo h1 span {
-            color: var(--secondary-color);
-            font-weight: 600;
-        }
+      .popular-post img {
+        width: 70px;
+        height: 70px;
+        border-radius: 5px;
+        object-fit: cover;
+      }
 
+      .popular-post h4 {
+        font-size: 0.95rem;
+        margin-bottom: 5px;
+      }
+
+      .popular-post span {
+        font-size: 0.8rem;
+        color: #7f8c8d;
+      }
+
+      /* Newsletter */
+      .newsletter-form {
+        margin-top: 20px;
+      }
+
+      .newsletter-form input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
+
+      .newsletter-form button {
+        width: 100%;
+        padding: 12px;
+        background: var(--primary-color);
+        color: var(--white);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      .newsletter-form button:hover {
+        background: #4a89dc;
+      }
+
+      /* Pagination */
+      .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 50px;
+      }
+
+      .page-numbers {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--white);
+        color: var(--dark-color);
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: var(--soft-shadow);
+        transition: var(--transition);
+      }
+
+      .page-numbers:hover,
+      .page-numbers.current {
+        background: var(--primary-color);
+        color: var(--white);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
         .mobile-menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            cursor: pointer;
-            z-index: 101;
+          display: block;
         }
 
         .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-            align-items: center;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          max-width: 300px;
+          height: 100vh;
+          background-color: var(--white);
+          flex-direction: column;
+          justify-content: flex-start;
+          padding-top: 100px;
+          gap: 20px;
+          transition: var(--transition);
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+          z-index: 100;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark-color);
-            font-weight: 500;
-            padding: 5px 0;
-            position: relative;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--secondary-color);
-            bottom: 0;
-            left: 0;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-
-        .btn-cita {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: var(--soft-shadow);
-            white-space: nowrap;
-        }
-
-        .btn-cita:hover {
-            background-color: #8CC152;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(160, 212, 104, 0.3);
-        }
-
-        /* Blog Hero */
-        .blog-hero {
-            background: linear-gradient(135deg, rgba(93, 156, 236, 0.9) 0%, rgba(160, 212, 104, 0.9) 100%);
-            color: var(--white);
-            text-align: center;
-            padding: 60px 0;
+        .nav-links.active {
+          right: 0;
         }
 
         .blog-hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .blog-hero {
+          padding: 40px 0;
         }
 
-        .blog-hero p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
+        .blog-hero h1 {
+          font-size: 1.8rem;
         }
-
-        /* Blog Content */
-        .blog-section {
-            padding: 50px 0;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .blog-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--soft-shadow);
-            transition: var(--transition);
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .blog-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .blog-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .blog-card:hover .blog-image img {
-            transform: scale(1.05);
-        }
-
-        .blog-content {
-            padding: 20px;
-        }
-
-        .blog-meta {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 10px;
-            font-size: 0.85rem;
-            color: #7f8c8d;
-        }
-
-        .blog-meta i {
-            color: var(--secondary-color);
-        }
-
-        .blog-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--dark-color);
-        }
-
-        .blog-content p {
-            color: #7f8c8d;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-
-        .read-more {
-            display: inline-block;
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .read-more:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
-
-        /* Blog Sidebar */
-        .blog-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-        }
-
-        @media (min-width: 992px) {
-            .blog-container {
-                grid-template-columns: 2fr 1fr;
-            }
-        }
-
-        .sidebar {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: var(--soft-shadow);
-            height: fit-content;
-        }
-
-        .sidebar-widget {
-            margin-bottom: 30px;
-        }
-
-        .sidebar-widget:last-child {
-            margin-bottom: 0;
-        }
-
-        .sidebar-widget h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--secondary-color);
-            color: var(--dark-color);
-        }
-
-        .categories-list {
-            list-style: none;
-        }
-
-        .categories-list li {
-            margin-bottom: 10px;
-        }
-
-        .categories-list a {
-            color: var(--dark-color);
-            text-decoration: none;
-            transition: var(--transition);
-            display: block;
-            padding: 8px 0;
-        }
-
-        .categories-list a:hover {
-            color: var(--primary-color);
-            padding-left: 10px;
-        }
-
-        .categories-list a i {
-            margin-right: 8px;
-            color: var(--secondary-color);
-        }
-
-        .popular-posts {
-            list-style: none;
-        }
-
-        .popular-post {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .popular-post:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .popular-post img {
-            width: 70px;
-            height: 70px;
-            border-radius: 5px;
-            object-fit: cover;
-        }
-
-        .popular-post h4 {
-            font-size: 0.95rem;
-            margin-bottom: 5px;
-        }
-
-        .popular-post span {
-            font-size: 0.8rem;
-            color: #7f8c8d;
-        }
-
-        /* Newsletter */
-        .newsletter-form {
-            margin-top: 20px;
-        }
-
-        .newsletter-form input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-
-        .newsletter-form button {
-            width: 100%;
-            padding: 12px;
-            background: var(--primary-color);
-            color: var(--white);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .newsletter-form button:hover {
-            background: #4A89DC;
-        }
-
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 50px;
-        }
-
-        .page-numbers {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--white);
-            color: var(--dark-color);
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: var(--soft-shadow);
-            transition: var(--transition);
-        }
-
-        .page-numbers:hover, .page-numbers.current {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        /* Footer (igual que en las páginas anteriores) */
-        footer {
-            background-color: #2c3e50;
-            color: var(--white);
-            padding: 60px 0 30px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .footer-logo img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .footer-logo h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .footer-logo h3 span {
-            color: var(--secondary-color);
-            font-weight: 600;
-        }
-
-        .footer-about p {
-            color: #bdc3c7;
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-        }
-
-        .footer-social a {
-            color: var(--white);
-            background-color: rgba(255,255,255,0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .footer-social a:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-links h4, .footer-contact h4 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-links h4:after, .footer-contact h4:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--secondary-color);
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary-color);
-            padding-left: 5px;
-        }
-
-        .contact-item-footer {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .contact-item-footer i {
-            color: var(--secondary-color);
-            margin-top: 3px;
-        }
-
-        .contact-item-footer p {
-            color: #bdc3c7;
-            line-height: 1.6;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #bdc3c7;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: 100vh;
-                background-color: var(--white);
-                flex-direction: column;
-                justify-content: flex-start;
-                padding-top: 100px;
-                gap: 20px;
-                transition: var(--transition);
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-                z-index: 100;
-            }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .blog-hero h1 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .blog-hero {
-                padding: 40px 0;
-            }
-            
-            .blog-hero h1 {
-                font-size: 1.8rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
       <div class="top-bar">
         <div class="container">
@@ -648,9 +546,15 @@
             </div>
           </div>
           <div class="social-links">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="WhatsApp"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
           </div>
         </div>
       </div>
@@ -658,7 +562,10 @@
       <nav class="main-nav">
         <div class="container">
           <div class="logo">
-            <img src="https://www.unir.net/wp-content/uploads/2024/04/La-diferencia-entre-nutricion-y-alimentacion1.jpg" alt="Nutrición Saludable" />
+            <img
+              src="https://www.unir.net/wp-content/uploads/2024/04/La-diferencia-entre-nutricion-y-alimentacion1.jpg"
+              alt="Nutrición Saludable"
+            />
             <h1>Nutrición<span>Saludable</span></h1>
           </div>
 
@@ -668,216 +575,628 @@
 
           <ul class="nav-links" id="navLinks">
             <li><a href="/index.html">Inicio</a></li>
-            <li><a href="#">Servicios</a></li>
-            <li><a href="#">Sobre Nosotros</a></li>
-            <li><a href="#" class="active">Blog</a></li>
-            <li><a href="#">Contacto</a></li>
-            <li class="mobile-only">
-              <button class="btn-cita">Solicita tu cita</button>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle"
+                >Servicios <i class="fas fa-chevron-down"></i
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="/nutricion">Nutrición Clínica</a></li>
+                <li><a href="/terapia-fisica">Terapia Física</a></li>
+                <li>
+                  <a href="/nutricion-corporativa">Nutrición Corporativa</a>
+                </li>
+                <li><a href="/unidad-diagnostica">Unidad Diagnóstica</a></li>
+                <li><a href="/control-peso">Control de Peso</a></li>
+                <li><a href="/geriatria">Salud Geriátrica</a></li>
+              </ul>
             </li>
+            <li><a href="/programas.html">Programas</a></li>
+            <li><a href="/sobreNosotros.html">Sobre Nosotros</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="#">Contacto</a></li>
           </ul>
         </div>
       </nav>
     </header>
 
     <section class="blog-hero">
-        <div class="container">
-            <h1>Consejos de Salud y Nutrición</h1>
-            <p>Descubre artículos escritos por nuestros especialistas para mejorar tu calidad de vida a través de la alimentación y hábitos saludables.</p>
-        </div>
+      <div class="container">
+        <h1>Consejos de Salud y Nutrición</h1>
+        <p>
+          Descubre artículos escritos por nuestros especialistas para mejorar tu
+          calidad de vida a través de la alimentación y hábitos saludables.
+        </p>
+      </div>
     </section>
 
     <section class="blog-section">
-        <div class="container">
-            <div class="blog-container">
-                <main>
-                    <div class="blog-grid">
-                        <!-- Artículo 1 -->
-                        <article class="blog-card">
-                            <div class="blog-image">
-                                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Alimentos saludables">
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <span><i class="far fa-calendar-alt"></i> 15 Mayo, 2023</span>
-                                    <span><i class="far fa-user"></i> Dra. María Fernández</span>
-                                </div>
-                                <h3>5 Alimentos Esenciales para Mejorar tu Sistema Inmunológico</h3>
-                                <p>Descubre cómo fortalecer tus defensas de manera natural con estos alimentos ricos en nutrientes que deberías incluir en tu dieta diaria.</p>
-                                <a href="#" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </article>
+      <div class="container">
+        <div class="blog-container">
+          <main>
+            <div class="blog-grid">
+              <!-- Artículo 1 -->
+              <article class="blog-card">
+                <div class="blog-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    alt="Alimentos saludables"
+                  />
+                </div>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <span
+                      ><i class="far fa-calendar-alt"></i> 15 Mayo, 2023</span
+                    >
+                    <span
+                      ><i class="far fa-user"></i> Dra. María Fernández</span
+                    >
+                  </div>
+                  <h3>
+                    5 Alimentos Esenciales para Mejorar tu Sistema Inmunológico
+                  </h3>
+                  <p>
+                    Descubre cómo fortalecer tus defensas de manera natural con
+                    estos alimentos ricos en nutrientes que deberías incluir en
+                    tu dieta diaria.
+                  </p>
+                  <a href="#" class="read-more"
+                    >Leer más <i class="fas fa-arrow-right"></i
+                  ></a>
+                </div>
+              </article>
 
-                        <!-- Artículo 2 -->
-                        <article class="blog-card">
-                            <div class="blog-image">
-                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ejercicio en casa">
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <span><i class="far fa-calendar-alt"></i> 8 Mayo, 2023</span>
-                                    <span><i class="far fa-user"></i> Lic. Carlos Rodríguez</span>
-                                </div>
-                                <h3>Rutina de Ejercicios en Casa para Principiantes</h3>
-                                <p>Una guía práctica con ejercicios que puedes hacer en casa sin necesidad de equipos especiales para mantenerte activo y saludable.</p>
-                                <a href="#" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </article>
+              <!-- Artículo 2 -->
+              <article class="blog-card">
+                <div class="blog-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    alt="Ejercicio en casa"
+                  />
+                </div>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <span
+                      ><i class="far fa-calendar-alt"></i> 8 Mayo, 2023</span
+                    >
+                    <span
+                      ><i class="far fa-user"></i> Lic. Carlos Rodríguez</span
+                    >
+                  </div>
+                  <h3>Rutina de Ejercicios en Casa para Principiantes</h3>
+                  <p>
+                    Una guía práctica con ejercicios que puedes hacer en casa
+                    sin necesidad de equipos especiales para mantenerte activo y
+                    saludable.
+                  </p>
+                  <a href="#" class="read-more"
+                    >Leer más <i class="fas fa-arrow-right"></i
+                  ></a>
+                </div>
+              </article>
 
-                        <!-- Artículo 3 -->
-                        <article class="blog-card">
-                            <div class="blog-image">
-                                <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dieta mediterránea">
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-meta">
-                                    <span><i class="far fa-calendar-alt"></i> 1 Mayo, 2023</span>
-                                    <span><i class="far fa-user"></i> Dra. Laura Jiménez</span>
-                                </div>
-                                <h3>Beneficios de la Dieta Mediterránea para la Salud Cardiovascular</h3>
-                                <p>Conoce por qué la dieta mediterránea es considerada una de las más saludables del mundo y cómo adoptar sus principios en tu alimentación.</p>
-                                <a href="#" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="pagination">
-                        <a href="#" class="page-numbers current">1</a>
-                        <a href="#" class="page-numbers">2</a>
-                        <a href="#" class="page-numbers">3</a>
-                        <a href="#" class="page-numbers">></a>
-                    </div>
-                </main>
-
-                <aside class="sidebar">
-                    <div class="sidebar-widget">
-                        <h3>Categorías</h3>
-                        <ul class="categories-list">
-                            <li><a href="#"><i class="fas fa-chevron-right"></i> Nutrición Clínica</a></li>
-                            <li><a href="#"><i class="fas fa-chevron-right"></i> Ejercicio Físico</a></li>
-                            <li><a href="#"><i class="fas fa-chevron-right"></i> Salud Mental</a></li>
-                            <li><a href="#"><i class="fas fa-chevron-right"></i> Recetas Saludables</a></li>
-                            <li><a href="#"><i class="fas fa-chevron-right"></i> Vida Saludable</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-widget">
-                        <h3>Artículos Populares</h3>
-                        <ul class="popular-posts">
-                            <li class="popular-post">
-                                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=80" alt="Comida saludable">
-                                <div>
-                                    <h4>10 Superalimentos que Debes Conocer</h4>
-                                    <span>20 Abr, 2023</span>
-                                </div>
-                            </li>
-                            <li class="popular-post">
-                                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=80" alt="Vegetales">
-                                <div>
-                                    <h4>¿Cómo Aumentar el Consumo de Vegetales?</h4>
-                                    <span>12 Abr, 2023</span>
-                                </div>
-                            </li>
-                            <li class="popular-post">
-                                <img src="https://images.unsplash.com/photo-1535914254981-b5012eebbd15?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=80" alt="Hidratación">
-                                <div>
-                                    <h4>La Importancia de la Hidratación Correcta</h4>
-                                    <span>5 Abr, 2023</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-widget">
-                        <h3>Newsletter</h3>
-                        <p>Suscríbete para recibir consejos de salud directamente en tu correo.</p>
-                        <form class="newsletter-form">
-                            <input type="text" placeholder="Tu nombre">
-                            <input type="email" placeholder="Tu correo electrónico">
-                            <button type="submit">Suscribirse</button>
-                        </form>
-                    </div>
-                </aside>
+              <!-- Artículo 3 -->
+              <article class="blog-card">
+                <div class="blog-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    alt="Dieta mediterránea"
+                  />
+                </div>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <span
+                      ><i class="far fa-calendar-alt"></i> 1 Mayo, 2023</span
+                    >
+                    <span><i class="far fa-user"></i> Dra. Laura Jiménez</span>
+                  </div>
+                  <h3>
+                    Beneficios de la Dieta Mediterránea para la Salud
+                    Cardiovascular
+                  </h3>
+                  <p>
+                    Conoce por qué la dieta mediterránea es considerada una de
+                    las más saludables del mundo y cómo adoptar sus principios
+                    en tu alimentación.
+                  </p>
+                  <a href="#" class="read-more"
+                    >Leer más <i class="fas fa-arrow-right"></i
+                  ></a>
+                </div>
+              </article>
             </div>
+          </main>
+
+          <aside class="sidebar">
+            <div class="sidebar-widget">
+              <h3>Categorías</h3>
+              <ul class="categories-list">
+                <li>
+                  <a href="#"
+                    ><i class="fas fa-chevron-right"></i> Nutrición Clínica</a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    ><i class="fas fa-chevron-right"></i> Ejercicio Físico</a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    ><i class="fas fa-chevron-right"></i> Salud Mental</a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    ><i class="fas fa-chevron-right"></i> Recetas Saludables</a
+                  >
+                </li>
+                <li>
+                  <a href="#"
+                    ><i class="fas fa-chevron-right"></i> Vida Saludable</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="sidebar-widget">
+              <h3>Artículos Populares</h3>
+              <ul class="popular-posts">
+                <li class="popular-post">
+                  <img
+                    src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=80"
+                    alt="Comida saludable"
+                  />
+                  <div>
+                    <h4>10 Superalimentos que Debes Conocer</h4>
+                    <span>20 Abr, 2023</span>
+                  </div>
+                </li>
+                <li class="popular-post">
+                  <img
+                    src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=80"
+                    alt="Vegetales"
+                  />
+                  <div>
+                    <h4>¿Cómo Aumentar el Consumo de Vegetales?</h4>
+                    <span>12 Abr, 2023</span>
+                  </div>
+                </li>
+                <li class="popular-post">
+                  <img
+                    src="https://images.unsplash.com/photo-1535914254981-b5012eebbd15?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=80"
+                    alt="Hidratación"
+                  />
+                  <div>
+                    <h4>La Importancia de la Hidratación Correcta</h4>
+                    <span>5 Abr, 2023</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </aside>
         </div>
+      </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <div class="footer-logo">
-                        <img src="https://www.unir.net/wp-content/uploads/2024/04/La-diferencia-entre-nutricion-y-alimentacion1.jpg" alt="Nutrición Saludable" />
-                        <h3>Nutrición<span>Saludable</span></h3>
-                    </div>
-                    <p>Somos un centro especializado en salud integral, ofreciendo programas de nutrición, terapia física y diagnóstico preventivo con un enfoque humano y profesional.</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-links">
-                    <h4>Enlaces rápidos</h4>
-                    <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Servicios</a></li>
-                        <li><a href="#">Sobre Nosotros</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contacto</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-links">
-                    <h4>Programas</h4>
-                    <ul>
-                        <li><a href="#">Nutrición Personalizada</a></li>
-                        <li><a href="#">Terapia Física</a></li>
-                        <li><a href="#">Nutrición Corporativa</a></li>
-                        <li><a href="#">Unidad Diagnóstica</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <h4>Contacto</h4>
-                    <div class="contact-item-footer">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>Av. Bienestar 123, Ciudad Salud</p>
-                    </div>
-                    <div class="contact-item-footer">
-                        <i class="fas fa-phone-alt"></i>
-                        <p>+1 234 567 890</p>
-                    </div>
-                    <div class="contact-item-footer">
-                        <i class="fas fa-envelope"></i>
-                        <p>consultas@nutricionsaludable.com</p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 Nutrición Saludable. Todos los derechos reservados.</p>
-            </div>
+    <footer class="site-footer">
+        <!-- Ola decorativa superior para transición suave -->
+        <div class="footer-wave">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+              opacity=".25"
+              fill="#f8f9fa"
+            ></path>
+            <path
+              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+              opacity=".5"
+              fill="#f8f9fa"
+            ></path>
+            <path
+              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+              fill="#f8f9fa"
+            ></path>
+          </svg>
         </div>
-    </footer>
+  
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-main">
+              <div class="footer-about">
+                <h2>Nutrición<span>Saludable</span></h2>
+                <p>
+                  Transformamos vidas a través de la nutrición integral,
+                  combinando ciencia y bienestar para alcanzar tus metas de salud.
+                </p>
+                <div class="footer-social">
+                  <a href="#" aria-label="Facebook"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a href="#" aria-label="Instagram"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                  <a href="#" aria-label="WhatsApp"
+                    ><i class="fab fa-whatsapp"></i
+                  ></a>
+                </div>
+              </div>
+  
+              <div class="footer-contact">
+                <h3>Contacto</h3>
+                <ul class="contact-info">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Av. Bienestar 123, Ciudad Salud</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-envelope"></i>
+                    <span>consultas@nutricionsaludable.com</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+1 234 567 890</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-clock"></i>
+                    <span
+                      >Lunes a Viernes: 8am - 6pm<br />Sábados: 8am - 1pm</span
+                    >
+                  </li>
+                </ul>
+              </div>
+  
+              <div class="footer-services">
+                <h3>Servicios</h3>
+                <ul>
+                  <li><a href="#">Nutrición clínica</a></li>
+                  <li><a href="#">Nutrición corporativa</a></li>
+                  <li><a href="#">Fisiologías específicas</a></li>
+                  <li><a href="#">Psiconutrición y terapias</a></li>
+                  <li><a href="#">Estudios especializados</a></li>
+                  <li><a href="#">Nutritienda</a></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </footer>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const navLinks = document.getElementById('navLinks');
+      // Mobile menu toggle
+      const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+      const navLinks = document.getElementById("navLinks");
 
-        mobileMenuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+      mobileMenuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
 
-        // Close menu when clicking on a link
-        const navItems = document.querySelectorAll('.nav-links a');
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+      // Close menu when clicking on a link
+      const navItems = document.querySelectorAll(".nav-links a");
+      navItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          navLinks.classList.remove("active");
         });
+      });
     </script>
-</body>
+  </body>
 </html>
+
+
+
+<style>
+    /* Estilos para el footer */
+    .site-footer {
+      background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+      color: white;
+      position: relative;
+      padding-top: 80px;
+      margin-top: -1px;
+    }
+  
+    .footer-wave {
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+  
+    .footer-wave svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 50px;
+    }
+  
+    .footer-content {
+      padding: 40px 0 20px;
+    }
+  
+    .footer-main {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+  
+    .footer-about,
+    .footer-contact,
+    .footer-services,
+    .footer-newsletter {
+      flex: 1;
+      min-width: 250px;
+    }
+  
+    .footer-logo {
+      max-width: 80px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+    }
+  
+    .footer-about h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: white;
+    }
+  
+    .footer-about h2 span {
+      color: #2ecc71;
+      font-weight: 700;
+    }
+  
+    .footer-about p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+  
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+  
+    .footer-social a {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+  
+    .footer-social a:hover {
+      background: #2ecc71;
+      transform: translateY(-3px);
+    }
+  
+    .footer-contact h3,
+    .footer-services h3,
+    .footer-newsletter h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+  
+    /* Estilos para el dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+  
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: var(--white);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 10px 0;
+      z-index: 1000;
+      list-style: none;
+    }
+  
+    .dropdown-menu li {
+      padding: 0;
+    }
+  
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 20px;
+      color: var(--dark-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+  
+    .dropdown-menu a:hover {
+      background-color: rgba(93, 156, 236, 0.1);
+      color: var(--primary-color);
+      padding-left: 25px;
+    }
+  
+    /* Mostrar el dropdown al hacer hover */
+    .dropdown:hover .dropdown-menu {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+  
+    /* Pequeña animación */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    .footer-contact h3:after,
+    .footer-services h3:after,
+    .footer-newsletter h3:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: #2ecc71;
+    }
+  
+    .contact-info {
+      list-style: none;
+      padding: 0;
+    }
+  
+    .contact-info li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+    }
+  
+    .contact-info i {
+      margin-right: 10px;
+      color: #2ecc71;
+      margin-top: 3px;
+    }
+  
+    .contact-info span {
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+  
+    .footer-services ul {
+      list-style: none;
+      padding: 0;
+    }
+  
+    .footer-services li {
+      margin-bottom: 10px;
+    }
+  
+    .footer-services a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+      display: block;
+      padding: 5px 0;
+    }
+  
+    .footer-services a:hover {
+      color: #2ecc71;
+      padding-left: 5px;
+    }
+  
+    .footer-newsletter p {
+      opacity: 0.9;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+  
+    .newsletter-form {
+      display: flex;
+    }
+  
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 0.9rem;
+    }
+  
+    .newsletter-form button {
+      background: #2ecc71;
+      color: white;
+      border: none;
+      padding: 0 20px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+  
+    .newsletter-form button:hover {
+      background: #27ae60;
+    }
+  
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .footer-bottom p {
+      margin: 10px 0;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+  
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.7;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+  
+    .footer-links a:hover {
+      opacity: 1;
+      color: #2ecc71;
+    }
+  
+    .footer-links span {
+      opacity: 0.3;
+    }
+  
+    @media (max-width: 768px) {
+      .footer-main {
+        flex-direction: column;
+        gap: 40px;
+      }
+  
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+  
+      .footer-links {
+        justify-content: center;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .dropdown.open .dropdown-menu {
+        display: block;
+        position: static;
+        box-shadow: none;
+        animation: none;
+      }
+    }
+  </style>
