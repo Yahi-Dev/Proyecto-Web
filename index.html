@@ -14,21 +14,21 @@
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-envelope icon"></i>
-                        <span>consultas@nutricionsaludable.com</span>
+                        <span class="contact-text">consultas@nutricionsaludable.com</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt icon"></i>
-                        <span>+1 234 567 890</span>
+                        <span class="contact-text">+1 234 567 890</span>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item desktop-only">
                         <i class="fas fa-map-marker-alt icon"></i>
-                        <span>Av. Bienestar 123, Ciudad Salud</span>
+                        <span class="contact-text">Av. Bienestar 123, Ciudad Salud</span>
                     </div>
                 </div>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
@@ -39,15 +39,20 @@
                     <img src="https://www.unir.net/wp-content/uploads/2024/04/La-diferencia-entre-nutricion-y-alimentacion1.jpg" alt="Nutrición Saludable">
                     <h1>Nutrición<span>Saludable</span></h1>
                 </div>
-                <ul class="nav-links">
+                
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+                <ul class="nav-links" id="navLinks">
                     <li><a href="#">Inicio</a></li>
                     <li><a href="#">Servicios</a></li>
                     <li><a href="#">Programas</a></li>
                     <li><a href="#">Sobre Nosotros</a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">Contacto</a></li>
+                    <li class="mobile-only"><button class="btn-cita">Solicita tu cita</button></li>
                 </ul>
-                <button class="btn-cita">Solicita tu cita</button>
             </div>
         </nav>
     </header>
@@ -61,5 +66,14 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-times');
+            this.querySelector('i').classList.toggle('fa-bars');
+        });
+    </script>
 </body>
 </html>
