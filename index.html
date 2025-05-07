@@ -9,7 +9,19 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <link rel="stylesheet" href="./style.css" />
-    <title>CNC | Centro de Nutrico Clinica</title>
+    <title id="pageTitle">CNC | Centro de Nutrico Clinica</title>
+    <script>
+      let titleText = "CNC | Centro de Nutrico Clinica";
+      let position = 0;
+  
+      function animateTitle() {
+        document.title = titleText.substring(position) + titleText.substring(0, position);
+        position = (position + 1) % titleText.length;
+      }
+  
+      // Actualizar cada 300ms
+      setInterval(animateTitle, 50);
+    </script>
   </head>
   <body>
     <header>
