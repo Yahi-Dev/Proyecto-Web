@@ -58,8 +58,23 @@
 
           <ul class="nav-links" id="navLinks">
             <li><a href="/index.html">Inicio</a></li>
-            <li><a href="#">Servicios</a></li>
-            <li><a href="#">Sobre Nosotros</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle"
+                >Servicios <i class="fas fa-chevron-down"></i
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="/nutricion">Nutrición Clínica</a></li>
+                <li><a href="/terapia-fisica">Terapia Física</a></li>
+                <li>
+                  <a href="/nutricion-corporativa">Nutrición Corporativa</a>
+                </li>
+                <li><a href="/unidad-diagnostica">Unidad Diagnóstica</a></li>
+                <li><a href="/control-peso">Control de Peso</a></li>
+                <li><a href="/geriatria">Salud Geriátrica</a></li>
+              </ul>
+            </li>
+            <li><a href="/programas.html">Programas</a></li>
+            <li><a href="/sobreNosotros.html">Sobre Nosotros</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="#">Contacto</a></li>
             <li class="mobile-only">
@@ -78,7 +93,9 @@
             Programas diseñados para alcanzar tus metas de bienestar de forma
             natural y sostenible.
           </p>
-          <button class="btn-primary">Conoce nuestros programas</button>
+          <a href="/programas.html" class="btn-primary"
+            >Conoce nuestros programas</a
+          >
         </div>
       </div>
     </section>
@@ -314,27 +331,45 @@
       <!-- Ola decorativa superior para transición suave -->
       <div class="footer-wave">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#f8f9fa"></path>
-          <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#f8f9fa"></path>
-          <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#f8f9fa"></path>
+          <path
+            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+            opacity=".25"
+            fill="#f8f9fa"
+          ></path>
+          <path
+            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+            opacity=".5"
+            fill="#f8f9fa"
+          ></path>
+          <path
+            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+            fill="#f8f9fa"
+          ></path>
         </svg>
       </div>
-      
+
       <div class="container">
         <div class="footer-content">
           <div class="footer-main">
             <div class="footer-about">
               <h2>Nutrición<span>Saludable</span></h2>
               <p>
-                Transformamos vidas a través de la nutrición integral, combinando ciencia y bienestar para alcanzar tus metas de salud.
+                Transformamos vidas a través de la nutrición integral,
+                combinando ciencia y bienestar para alcanzar tus metas de salud.
               </p>
               <div class="footer-social">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" aria-label="Facebook"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#" aria-label="Instagram"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#" aria-label="WhatsApp"
+                  ><i class="fab fa-whatsapp"></i
+                ></a>
               </div>
             </div>
-    
+
             <div class="footer-contact">
               <h3>Contacto</h3>
               <ul class="contact-info">
@@ -352,11 +387,13 @@
                 </li>
                 <li>
                   <i class="fas fa-clock"></i>
-                  <span>Lunes a Viernes: 8am - 6pm<br>Sábados: 8am - 1pm</span>
+                  <span
+                    >Lunes a Viernes: 8am - 6pm<br />Sábados: 8am - 1pm</span
+                  >
                 </li>
               </ul>
             </div>
-    
+
             <div class="footer-services">
               <h3>Servicios</h3>
               <ul>
@@ -368,15 +405,13 @@
                 <li><a href="#">Nutritienda</a></li>
               </ul>
             </div>
-  
           </div>
-    
+
           <div class="footer-bottom">
-            <p>&copy; 2023 Nutrición Saludable. Todos los derechos reservados.</p>
+            <p>
+              &copy; 2023 Nutrición Saludable. Todos los derechos reservados.
+            </p>
             <div class="footer-links">
-              <a href="#">Política de Privacidad</a>
-              <span>|</span>
-              <a href="#">Términos de Servicio</a>
               <span>|</span>
               <a href="#citas">Agendar Cita</a>
             </div>
@@ -400,8 +435,6 @@
   </body>
 </html>
 
-
-
 <style>
   /* Estilos para el footer */
   .site-footer {
@@ -411,7 +444,7 @@
     padding-top: 80px;
     margin-top: -1px;
   }
-  
+
   .footer-wave {
     position: absolute;
     top: -50px;
@@ -420,65 +453,65 @@
     overflow: hidden;
     line-height: 0;
   }
-  
+
   .footer-wave svg {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
     height: 50px;
   }
-  
+
   .footer-content {
     padding: 40px 0 20px;
   }
-  
+
   .footer-main {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
     margin-bottom: 40px;
   }
-  
-  .footer-about, 
-  .footer-contact, 
-  .footer-services, 
+
+  .footer-about,
+  .footer-contact,
+  .footer-services,
   .footer-newsletter {
     flex: 1;
     min-width: 250px;
   }
-  
+
   .footer-logo {
     max-width: 80px;
     border-radius: 50%;
     margin-bottom: 15px;
-    border: 3px solid rgba(255,255,255,0.1);
+    border: 3px solid rgba(255, 255, 255, 0.1);
   }
-  
+
   .footer-about h2 {
     font-size: 1.8rem;
     margin-bottom: 15px;
     color: white;
   }
-  
+
   .footer-about h2 span {
     color: #2ecc71;
     font-weight: 700;
   }
-  
+
   .footer-about p {
     line-height: 1.6;
     margin-bottom: 20px;
     opacity: 0.9;
   }
-  
+
   .footer-social {
     display: flex;
     gap: 15px;
   }
-  
+
   .footer-social a {
     color: white;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -487,12 +520,12 @@
     justify-content: center;
     transition: all 0.3s ease;
   }
-  
+
   .footer-social a:hover {
     background: #2ecc71;
     transform: translateY(-3px);
   }
-  
+
   .footer-contact h3,
   .footer-services h3,
   .footer-newsletter h3 {
@@ -501,11 +534,74 @@
     position: relative;
     padding-bottom: 10px;
   }
-  
+
+  /* Estilos para el dropdown */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: var(--white);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px 0;
+    z-index: 1000;
+    list-style: none;
+  }
+
+  .dropdown-menu li {
+    padding: 0;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 8px 20px;
+    color: var(--dark-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: rgba(93, 156, 236, 0.1);
+    color: var(--primary-color);
+    padding-left: 25px;
+  }
+
+  /* Mostrar el dropdown al hacer hover */
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  /* Pequeña animación */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   .footer-contact h3:after,
   .footer-services h3:after,
   .footer-newsletter h3:after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
@@ -513,38 +609,38 @@
     height: 2px;
     background: #2ecc71;
   }
-  
+
   .contact-info {
     list-style: none;
     padding: 0;
   }
-  
+
   .contact-info li {
     margin-bottom: 15px;
     display: flex;
     align-items: flex-start;
   }
-  
+
   .contact-info i {
     margin-right: 10px;
     color: #2ecc71;
     margin-top: 3px;
   }
-  
+
   .contact-info span {
     opacity: 0.9;
     line-height: 1.5;
   }
-  
+
   .footer-services ul {
     list-style: none;
     padding: 0;
   }
-  
+
   .footer-services li {
     margin-bottom: 10px;
   }
-  
+
   .footer-services a {
     color: white;
     text-decoration: none;
@@ -553,22 +649,22 @@
     display: block;
     padding: 5px 0;
   }
-  
+
   .footer-services a:hover {
     color: #2ecc71;
     padding-left: 5px;
   }
-  
+
   .footer-newsletter p {
     opacity: 0.9;
     margin-bottom: 15px;
     line-height: 1.5;
   }
-  
+
   .newsletter-form {
     display: flex;
   }
-  
+
   .newsletter-form input {
     flex: 1;
     padding: 12px 15px;
@@ -576,7 +672,7 @@
     border-radius: 4px 0 0 4px;
     font-size: 0.9rem;
   }
-  
+
   .newsletter-form button {
     background: #2ecc71;
     color: white;
@@ -586,32 +682,32 @@
     cursor: pointer;
     transition: all 0.3s ease;
   }
-  
+
   .newsletter-form button:hover {
     background: #27ae60;
   }
-  
+
   .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .footer-bottom p {
     margin: 10px 0;
     opacity: 0.7;
     font-size: 0.9rem;
   }
-  
+
   .footer-links {
     display: flex;
     align-items: center;
     gap: 15px;
   }
-  
+
   .footer-links a {
     color: white;
     text-decoration: none;
@@ -619,30 +715,55 @@
     font-size: 0.9rem;
     transition: all 0.3s ease;
   }
-  
+
   .footer-links a:hover {
     opacity: 1;
     color: #2ecc71;
   }
-  
+
   .footer-links span {
     opacity: 0.3;
   }
-  
+
   @media (max-width: 768px) {
     .footer-main {
       flex-direction: column;
       gap: 40px;
     }
-    
+
     .footer-bottom {
       flex-direction: column;
       text-align: center;
       gap: 10px;
     }
-    
+
     .footer-links {
       justify-content: center;
     }
   }
+
+  @media (max-width: 768px) {
+    .dropdown.open .dropdown-menu {
+      display: block;
+      position: static;
+      box-shadow: none;
+      animation: none;
+    }
+  }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdowns = document.querySelectorAll(".dropdown");
+
+    dropdowns.forEach((dropdown) => {
+      // Para dispositivos táctiles
+      dropdown.addEventListener("click", function (e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          this.classList.toggle("open");
+        }
+      });
+    });
+  });
+</script>

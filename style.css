@@ -15,6 +15,16 @@
     box-sizing: border-box;
 }
 
+a.btn-primary {
+    text-decoration: none;
+  }
+  
+  /* Opcional: Mantén el estilo al pasar el mouse si lo deseas */
+  a.btn-primary:hover,
+  a.btn-primary:focus {
+    text-decoration: none;
+  }
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
@@ -23,6 +33,19 @@ body {
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
+
+/* Opcional: Ajusta la duración de la animación */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y proximity;
+    }
+    
+    /* Animación personalizada para el scroll */
+    html.smooth-scroll {
+      scroll-behavior: smooth;
+    }
+  }
 
 .container {
     width: 90%;
@@ -45,6 +68,15 @@ body {
     align-items: center;
     flex-wrap: wrap;
 }
+
+@media (max-width: 768px) {
+    .dropdown.open .dropdown-menu {
+      display: block;
+      position: static;
+      box-shadow: none;
+      animation: none;
+    }
+  }
 
 .contact-info {
     display: flex;

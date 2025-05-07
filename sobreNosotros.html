@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros | Nutrición Saludable</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #5D9CEC;
+            --secondary-color: #A0D468;
+            --accent-color: #4FC1E9;
+            --light-color: #F5F7FA;
+            --dark-color: #434A54;
+            --white: #FFFFFF;
+            --soft-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header styles (same as before) */
+        .top-bar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            color: var(--light-color);
+            transform: translateY(-2px);
+        }
+
+        .icon {
+            font-size: 0.9rem;
+            min-width: 16px;
+        }
+
+        .contact-text {
+            white-space: nowrap;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            color: var(--light-color);
+            transform: translateY(-2px);
+        }
+
+        .main-nav {
+            background-color: var(--white);
+            padding: 15px 0;
+            box-shadow: var(--soft-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 101;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo h1 span {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .btn-cita {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--soft-shadow);
+            white-space: nowrap;
+        }
+
+        .btn-cita:hover {
+            background-color: #8CC152;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(160, 212, 104, 0.3);
+        }
+
+        /* About Hero */
+        .about-hero {
+            background: linear-gradient(135deg, rgba(93, 156, 236, 0.9) 0%, rgba(160, 212, 104, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .about-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* About Mission Section */
+        .about-mission {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .section-subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .mission-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .mission-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(93, 156, 236, 0.3);
+        }
+
+        .mission-card h3 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .mission-card p {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 80px 0;
+            background-color: #f8fafc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .values-section:before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(93, 156, 236, 0.1) 0%, rgba(255,255,255,0) 70%);
+            top: -150px;
+            left: -150px;
+            z-index: 1;
+        }
+
+        .values-section:after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(160, 212, 104, 0.1) 0%, rgba(255,255,255,0) 70%);
+            bottom: -200px;
+            right: -200px;
+            z-index: 1;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .value-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .value-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .value-card h3 i {
+            color: var(--secondary-color);
+        }
+
+        .value-card p {
+            color: #7f8c8d;
+            line-height: 1.7;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .team-member {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            text-align: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .member-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+
+        .member-info {
+            padding: 25px 20px;
+        }
+
+        .member-info h3 {
+            color: var(--dark-color);
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+
+        .member-info p {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .member-social a {
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+
+        .member-social a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* CTA Section */
+        .about-cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(93, 156, 236, 0.9) 0%, rgba(160, 212, 104, 0.9) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .about-cta .container {
+            max-width: 800px;
+        }
+
+        .about-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 100px;
+                gap: 20px;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .about-hero p {
+                font-size: 1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+      <div class="top-bar">
+        <div class="container">
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-envelope icon"></i>
+              <span class="contact-text">consultas@nutricionsaludable.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone-alt icon"></i>
+              <span class="contact-text">+1 234 567 890</span>
+            </div>
+            <div class="contact-item desktop-only">
+              <i class="fas fa-map-marker-alt icon"></i>
+              <span class="contact-text">Av. Bienestar 123, Ciudad Salud</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <div class="container">
+          <div class="logo">
+            <img src="https://www.unir.net/wp-content/uploads/2024/04/La-diferencia-entre-nutricion-y-alimentacion1.jpg" alt="Nutrición Saludable" />
+            <h1>Nutrición<span>Saludable</span></h1>
+          </div>
+
+          <div class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+          </div>
+
+          <ul class="nav-links" id="navLinks">
+            <li><a href="/index.html">Inicio</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle"
+                >Servicios <i class="fas fa-chevron-down"></i
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="/nutricion">Nutrición Clínica</a></li>
+                <li><a href="/terapia-fisica">Terapia Física</a></li>
+                <li>
+                  <a href="/nutricion-corporativa">Nutrición Corporativa</a>
+                </li>
+                <li><a href="/unidad-diagnostica">Unidad Diagnóstica</a></li>
+                <li><a href="/control-peso">Control de Peso</a></li>
+                <li><a href="/geriatria">Salud Geriátrica</a></li>
+              </ul>
+            </li>
+            <li><a href="/programas.html">Programas</a></li>
+            <li><a href="/sobreNosotros.html">Sobre Nosotros</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-hero-content">
+                <h1>Nuestra Pasión por tu Bienestar</h1>
+                <p>En Nutrición Saludable, nos dedicamos a transformar vidas a través de la nutrición clínica y terapias integrales con un enfoque científico y humano.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-mission">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestro Propósito</h2>
+                <p class="section-subtitle">Lo que nos impulsa cada día a servirte mejor</p>
+            </div>
+
+            <div class="mission-grid">
+                <!-- Misión -->
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Misión</h3>
+                    <p>Lograr un impacto positivo en la salud y la calidad de vida de los dominicanos, acercándolos a soluciones integrales de nutrición clínica con criterio científico.</p>
+                </div>
+
+                <!-- Visión -->
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Visión</h3>
+                    <p>En el 2025, Nutrición Saludable liderará el desarrollo de los centros de nutrición clínica en la República Dominicana, consolidándose como referente de buenas prácticas, profesionalidad y crecimiento sostenible.</p>
+                </div>
+
+                <!-- Filosofía -->
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Nuestra Filosofía</h3>
+                    <p>Creemos que cada persona merece atención personalizada basada en evidencia científica, con calidez humana y compromiso con resultados duraderos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Valores</h2>
+                <p class="section-subtitle">Los principios que guían cada decisión que tomamos</p>
+            </div>
+
+            <div class="values-grid">
+                <!-- Valor 1 -->
+                <div class="value-card">
+                    <h3><i class="fas fa-heart"></i> Sensibilidad y Ética</h3>
+                    <p>Actuamos con empatía, respeto y altos estándares éticos en cada interacción con nuestros pacientes y colegas.</p>
+                </div>
+
+                <!-- Valor 2 -->
+                <div class="value-card">
+                    <h3><i class="fas fa-star"></i> Excelencia</h3>
+                    <p>Nos orientamos a la excelencia en cada servicio que ofrecemos, buscando constantemente superar expectativas.</p>
+                </div>
+
+                <!-- Valor 3 -->
+                <div class="value-card">
+                    <h3><i class="fas fa-hands-helping"></i> Pasión por Servir</h3>
+                    <p>Nos mueve el genuino deseo de ayudar a otros a alcanzar su mejor versión a través de la salud nutricional.</p>
+                </div>
+
+                <!-- Valor 4 -->
+                <div class="value-card">
+                    <h3><i class="fas fa-lightbulb"></i> Innovación</h3>
+                    <p>Adoptamos las últimas evidencias científicas y tecnologías para ofrecer soluciones vanguardistas.</p>
+                </div>
+
+                <!-- Valor 5 -->
+                <div class="value-card">
+                    <h3><i class="fas fa-leaf"></i> Sostenibilidad</h3>
+                    <p>Promovemos prácticas saludables que benefician tanto a las personas como al medio ambiente, asegurando un futuro mejor.</p>
+                </div>
+
+                <!-- Valor 6 -->
+                <div class="value-card">
+                    <h3><i class="fas fa-users"></i> Trabajo en Equipo</h3>
+                    <p>Colaboramos interdisciplinariamente para ofrecer un abordaje integral a cada paciente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Conoce Nuestro Equipo</h2>
+                <p class="section-subtitle">Profesionales comprometidos con tu salud y bienestar</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- Miembro 1 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Dra. María Fernández">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dra. María Fernández</h3>
+                        <p>Directora Médica - Nutrióloga Clínica</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miembro 2 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Lic. Carlos Rodríguez">
+                    </div>
+                    <div class="member-info">
+                        <h3>Lic. Carlos Rodríguez</h3>
+                        <p>Coordinador de Terapia Física</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miembro 3 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Dra. Laura Jiménez">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dra. Laura Jiménez</h3>
+                        <p>Especialista en Nutrición Deportiva</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miembro 4 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Lic. Pedro Martínez">
+                    </div>
+                    <div class="member-info">
+                        <h3>Lic. Pedro Martínez</h3>
+                        <p>Especialista en Diagnóstico Nutricional</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <!-- Ola decorativa superior para transición suave -->
+        <div class="footer-wave">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+              opacity=".25"
+              fill="#f8f9fa"
+            ></path>
+            <path
+              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+              opacity=".5"
+              fill="#f8f9fa"
+            ></path>
+            <path
+              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+              fill="#f8f9fa"
+            ></path>
+          </svg>
+        </div>
+  
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-main">
+              <div class="footer-about">
+                <h2>Nutrición<span>Saludable</span></h2>
+                <p>
+                  Transformamos vidas a través de la nutrición integral,
+                  combinando ciencia y bienestar para alcanzar tus metas de salud.
+                </p>
+                <div class="footer-social">
+                  <a href="#" aria-label="Facebook"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a href="#" aria-label="Instagram"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                  <a href="#" aria-label="WhatsApp"
+                    ><i class="fab fa-whatsapp"></i
+                  ></a>
+                </div>
+              </div>
+  
+              <div class="footer-contact">
+                <h3>Contacto</h3>
+                <ul class="contact-info">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Av. Bienestar 123, Ciudad Salud</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-envelope"></i>
+                    <span>consultas@nutricionsaludable.com</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+1 234 567 890</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-clock"></i>
+                    <span
+                      >Lunes a Viernes: 8am - 6pm<br />Sábados: 8am - 1pm</span
+                    >
+                  </li>
+                </ul>
+              </div>
+  
+              <div class="footer-services">
+                <h3>Servicios</h3>
+                <ul>
+                  <li><a href="#">Nutrición clínica</a></li>
+                  <li><a href="#">Nutrición corporativa</a></li>
+                  <li><a href="#">Fisiologías específicas</a></li>
+                  <li><a href="#">Psiconutrición y terapias</a></li>
+                  <li><a href="#">Estudios especializados</a></li>
+                  <li><a href="#">Nutritienda</a></li>
+                </ul>
+              </div>
+            </div>
+  
+            <div class="footer-bottom">
+              <p>
+                &copy; 2023 Nutrición Saludable. Todos los derechos reservados.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+<style>
+    /* Estilos para el footer */
+    .site-footer {
+      background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+      color: white;
+      position: relative;
+      padding-top: 80px;
+      margin-top: -1px;
+    }
+  
+    .footer-wave {
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+  
+    .footer-wave svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 50px;
+    }
+  
+    .footer-content {
+      padding: 40px 0 20px;
+    }
+  
+    .footer-main {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+  
+    .footer-about,
+    .footer-contact,
+    .footer-services,
+    .footer-newsletter {
+      flex: 1;
+      min-width: 250px;
+    }
+  
+    .footer-logo {
+      max-width: 80px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+    }
+  
+    .footer-about h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: white;
+    }
+  
+    .footer-about h2 span {
+      color: #2ecc71;
+      font-weight: 700;
+    }
+  
+    .footer-about p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+  
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+  
+    .footer-social a {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+  
+    .footer-social a:hover {
+      background: #2ecc71;
+      transform: translateY(-3px);
+    }
+  
+    .footer-contact h3,
+    .footer-services h3,
+    .footer-newsletter h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+  
+    .footer-contact h3:after,
+    .footer-services h3:after,
+    .footer-newsletter h3:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: #2ecc71;
+    }
+  
+    .contact-info {
+      list-style: none;
+      padding: 0;
+    }
+  
+    .contact-info li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+    }
+  
+    .contact-info i {
+      margin-right: 10px;
+      color: #2ecc71;
+      margin-top: 3px;
+    }
+  
+    .contact-info span {
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+  
+    .footer-services ul {
+      list-style: none;
+      padding: 0;
+    }
+  
+    .footer-services li {
+      margin-bottom: 10px;
+    }
+  
+    .footer-services a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+      display: block;
+      padding: 5px 0;
+    }
+  
+    .footer-services a:hover {
+      color: #2ecc71;
+      padding-left: 5px;
+    }
+  
+    .footer-newsletter p {
+      opacity: 0.9;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+  
+    .newsletter-form {
+      display: flex;
+    }
+  
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 0.9rem;
+    }
+  
+    .newsletter-form button {
+      background: #2ecc71;
+      color: white;
+      border: none;
+      padding: 0 20px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+  
+    .newsletter-form button:hover {
+      background: #27ae60;
+    }
+  
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .footer-bottom p {
+      margin: 10px 0;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+  
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.7;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+  
+    .footer-links a:hover {
+      opacity: 1;
+      color: #2ecc71;
+    }
+  
+    .footer-links span {
+      opacity: 0.3;
+    }
+  
+    @media (max-width: 768px) {
+      .footer-main {
+        flex-direction: column;
+        gap: 40px;
+      }
+  
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+  
+      .footer-links {
+        justify-content: center;
+      }
+    }
+  
+    a.btn-cita {
+      text-decoration: none;
+      display: inline-block; /* Esto ayuda a mantener el estilo de botón */
+    }
+  
+    /* Opcional: asegura que no aparezca subrayado en estados hover/focus */
+    a.btn-cita:hover,
+    a.btn-cita:focus {
+      text-decoration: none;
+    }
+  
+    /* Estilos para el dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+  
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: var(--white);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 10px 0;
+      z-index: 1000;
+      list-style: none;
+    }
+  
+    .dropdown-menu li {
+      padding: 0;
+    }
+  
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 20px;
+      color: var(--dark-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+  
+    .dropdown-menu a:hover {
+      background-color: rgba(93, 156, 236, 0.1);
+      color: var(--primary-color);
+      padding-left: 25px;
+    }
+  
+    /* Mostrar el dropdown al hacer hover */
+    .dropdown:hover .dropdown-menu {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+  
+    /* Pequeña animación */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .dropdown.open .dropdown-menu {
+        display: block;
+        position: static;
+        box-shadow: none;
+        animation: none;
+      }
+    }
+  </style>
+  
