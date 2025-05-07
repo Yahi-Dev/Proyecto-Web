@@ -73,7 +73,7 @@
             <li><a href="/blog.html">Blog</a></li>
             <li><a href="/contacto.html">Contacto</a></li>
             <li class="mobile-only">
-              <button class="btn-cita">Solicita tu cita</button>
+              <a href="#citas" class="btn-cita">Solicita tu cita</a>
             </li>
           </ul>
         </div>
@@ -762,3 +762,22 @@
     });
   });
 </script>
+
+
+<style>
+  .mobile-only .btn-cita {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    text-decoration: none;
+    padding: 5px 15px;
+    border-radius: 30px;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--soft-shadow);
+
+    border: none;
+    cursor: pointer;
+  }
+
+</style>
