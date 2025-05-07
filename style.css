@@ -21,6 +21,7 @@ body {
     color: var(--dark-color);
     background-color: var(--light-color);
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .container {
@@ -511,3 +512,400 @@ body {
     right: -200px;
     z-index: 1;
 }
+
+
+
+
+
+//
+/* Estilos generales */
+.about-section {
+    padding: 4rem 0;
+    background-color: #f9fafb;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  /* Encabezado */
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  #about-heading {
+    font-size: 2.5rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  
+  .section-subtitle {
+    color: #718096;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  /* Contenido */
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #4a5568;
+  }
+  
+  .lead {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+  
+  /* Cita destacada */
+  .quote {
+    margin: 2.5rem 0;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #48bb78;
+    position: relative;
+  }
+  
+  blockquote p {
+    font-size: 1.4rem;
+    color: #2d3748;
+    margin: 0;
+    font-style: italic;
+    line-height: 1.5;
+  }
+  
+  .quote__caption {
+    margin-top: 1rem;
+    color: #718096;
+    font-size: 0.9rem;
+  }
+  
+  cite {
+    font-style: normal;
+    color: #48bb78;
+  }
+  
+  /* Último párrafo */
+  .about-content p:last-child {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    background-color: rgba(72, 187, 120, 0.1);
+    padding: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid #c6f6d5;
+  }
+  
+  /* Efectos hover */
+  .quote {
+    transition: transform 0.3s ease;
+  }
+  
+  .quote:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 1rem;
+    }
+    
+    #about-heading {
+      font-size: 2rem;
+    }
+    
+    blockquote p {
+      font-size: 1.2rem;
+    }
+    
+    .about-content {
+      font-size: 1rem;
+    }
+  }
+
+  /* Añade estos estilos al CSS existente */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.about-img {
+    width: 100%;
+    height: auto;
+    max-width: 550px;
+    border-radius: 12px;
+    transform: scale(1.03);
+    transition: transform 0.3s ease;
+}
+
+.about-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(72, 187, 120, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1;
+}
+
+.about-image:hover .about-img {
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-image {
+        max-width: 600px;
+        margin: 0 auto;
+        order: -1;
+    }
+    
+    .about-content {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-image {
+        max-width: 100%;
+    }
+}
+
+
+
+//
+/* Appointment Section - Mejorado */
+.appointment-section {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.appointment-section .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.appointment-section .section-header h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    position: relative;
+    display: inline-block;
+}
+
+.appointment-section .section-header h2:after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    bottom: -15px;
+    left: 25%;
+}
+
+.appointment-section .section-subtitle {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+}
+
+.appointment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* Columna de Información - Mejorada */
+.appointment-info {
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.appointment-info h3 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.appointment-info h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+}
+
+.service-features {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: 10px;
+    border: 2px solid rgba(160, 212, 104, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(93, 156, 236, 0.15);
+}
+
+.feature-item i {
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    min-width: 50px;
+    text-align: center;
+}
+
+.feature-item p {
+    color: #4a5568;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Formulario - Mejorado */
+.appointment-form {
+    padding: 3rem 2.5rem;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.appointment-form:before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, rgba(93, 156, 236, 0.1) 0%, rgba(160, 212, 104, 0.1) 100%);
+    border-radius: 30px;
+    transform: rotate(45deg);
+}
+
+.cita-form {
+    display: grid;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #f8fafc;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(93, 156, 236, 0.2);
+}
+
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 8px;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(93, 156, 236, 0.4);
+}
+
+@media (max-width: 768px) {
+    .appointment-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .appointment-info,
+    .appointment-form {
+        padding: 2rem;
+    }
+    
+    .appointment-section .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+
+
+//
