@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Nutrición | CNC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #5D9CEC;
+            --secondary-color: #A0D468;
+            --accent-color: #4FC1E9;
+            --light-color: #F5F7FA;
+            --dark-color: #434A54;
+            --white: #FFFFFF;
+            --soft-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        .top-bar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon {
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .main-nav {
+            background-color: var(--white);
+            padding: 15px 0;
+            box-shadow: var(--soft-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 175px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .service-hero {
+            background: linear-gradient(135deg, rgba(93, 156, 236, 0.9) 0%, rgba(160, 212, 104, 0.9) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .service-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--soft-shadow);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .service-content p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .service-features {
+            margin: 20px 0;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .service-features i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+
+        .btn-service {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-service:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Approach Section */
+        .approach-section {
+            padding: 60px 0;
+            background-color: #f8fafc;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .approach-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--soft-shadow);
+            text-align: center;
+        }
+
+        .approach-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .service-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+          <div class="container">
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-envelope icon"></i>
+                <span class="contact-text">info@cnc.com.do
+                </span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone-alt icon"></i>
+                <span class="contact-text">+1 829-724-4050</span>
+              </div>
+              <div class="contact-item desktop-only">
+                <i class="fas fa-map-marker-alt icon"></i>
+                <span class="contact-text">Calle Dr. Arturo Grullón No. 17, Santiago de los Caballeros</span>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <nav class="main-nav">
+          <div class="container">
+            <img
+              src="https://cnc.com.do/wp-content/uploads/2021/08/logo-CNC.png"
+              alt="Nutrición Saludable"
+              width="175"
+            />
+  
+            <ul class="nav-links" id="navLinks">
+              <li><a href="/index.html">Inicio</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle"
+                  >Servicios <i class="fas fa-chevron-down"></i
+                ></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/nutricionClinica.html">Nutrición Clínica</a></li>
+                  <li><a href="/terapiaFisica.html">Terapia Física</a></li>
+                  <li>
+                    <a href="/nutricionCorporativa.html">Nutrición Corporativa</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/programas.html">Programas</a></li>
+              <li><a href="/sobreNosotros.html">Sobre Nosotros</a></li>
+              <li><a href="/blog.html">Blog</a></li>
+              <li><a href="/contacto.html">Contacto</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+    <section class="service-hero">
+        <div class="container">
+            <h1>Nutrición Clínica Especializada</h1>
+            <p>Programas personalizados para mejorar tu salud y calidad de vida</p>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Servicios de Nutrición</h2>
+                <p>Enfoque científico y personalizado para cada necesidad</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Servicio 1 -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Nutrición clínica">
+                    </div>
+                    <div class="service-content">
+                        <h3>Evaluación Nutricional Completa</h3>
+                        <p>Análisis detallado de tu estado nutricional actual con mediciones antropométricas, bioquímicas y evaluación de hábitos alimentarios.</p>
+                        
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Valoración de composición corporal</li>
+                            <li><i class="fas fa-check"></i> Análisis de hábitos alimenticios</li>
+                            <li><i class="fas fa-check"></i> Detección de deficiencias nutricionales</li>
+                            <li><i class="fas fa-check"></i> Plan personalizado basado en resultados</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1535914254981-b5012eebbd15?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Control de peso">
+                    </div>
+                    <div class="service-content">
+                        <h3>Control de Peso Integral</h3>
+                        <p>Programa multidisciplinario para alcanzar y mantener un peso saludable con enfoque en cambios sostenibles.</p>
+                        
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Plan alimenticio personalizado</li>
+                            <li><i class="fas fa-check"></i> Educación nutricional</li>
+                            <li><i class="fas fa-check"></i> Acompañamiento psicológico</li>
+                            <li><i class="fas fa-check"></i> Seguimiento continuo</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Nutrición deportiva">
+                    </div>
+                    <div class="service-content">
+                        <h3>Nutrición Deportiva</h3>
+                        <p>Optimiza tu rendimiento físico con planes nutricionales diseñados para tus objetivos deportivos.</p>
+                        
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Evaluación de necesidades energéticas</li>
+                            <li><i class="fas fa-check"></i> Planes para aumento de masa muscular</li>
+                            <li><i class="fas fa-check"></i> Estrategias de hidratación</li>
+                            <li><i class="fas fa-check"></i> Suplementación basada en evidencia</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="approach-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestro Enfoque</h2>
+                <p>La metodología que nos diferencia</p>
+            </div>
+
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <div class="approach-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Personalizado</h3>
+                    <p>Cada plan se adapta a tus necesidades específicas, considerando tu historial médico, preferencias y estilo de vida.</p>
+                </div>
+
+                <div class="approach-card">
+                    <div class="approach-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Basado en Evidencia</h3>
+                    <p>Utilizamos los últimos avances científicos en nutrición para garantizar resultados efectivos y seguros.</p>
+                </div>
+
+                <div class="approach-card">
+                    <div class="approach-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Enfoque Integral</h3>
+                    <p>Consideramos todos los aspectos que influyen en tu relación con la alimentación para lograr cambios duraderos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <!-- Ola decorativa superior para transición suave -->
+        <div class="footer-wave">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+              opacity=".25"
+              fill="#f8f9fa"
+            ></path>
+            <path
+              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+              opacity=".5"
+              fill="#f8f9fa"
+            ></path>
+            <path
+              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+              fill="#f8f9fa"
+            ></path>
+          </svg>
+        </div>
+  
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-main">
+              <div class="footer-about">
+                <h2>CN<span>C</span></h2>
+                <p>
+                  Transformamos vidas a través de la nutrición integral,
+                  combinando ciencia y bienestar para alcanzar tus metas de salud.
+                </p>
+                <div class="footer-social">
+                  <a href="#" aria-label="Facebook"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a href="#" aria-label="Instagram"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                  <a href="#" aria-label="WhatsApp"
+                    ><i class="fab fa-whatsapp"></i
+                  ></a>
+                </div>
+              </div>
+  
+              <div class="footer-contact">
+                <h3>Contacto</h3>
+                <ul class="contact-info">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Calle Dr. Arturo Grullón No. 17, Santiago de los Caballeros</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-envelope"></i>
+                    <span>info@cnc.com.do</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+1 829-724-4050</span>
+                  </li>
+                  <li>
+                    <i class="fas fa-clock"></i>
+                    <span
+                      >Lunes a Viernes: 8am - 6pm<br />Sábados: 8am - 1pm</span
+                    >
+                  </li>
+                </ul>
+              </div>
+  
+              <div class="footer-services">
+                <h3>Servicios</h3>
+                <ul>
+                  <li><a href="/nutricionClinica.html">Nutrición clínica</a></li>
+                  <li><a href="/terapiaFisica.html">Terapia Física</a></li>
+                  <li><a href="/nutricionCorporativa.html">Nutrición Corporativa</a></li>
+                </ul>
+              </div>
+            </div>
+  
+            <div class="footer-bottom">
+              <p>
+                &copy; 2023 CNC. Todos los derechos reservados.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>
+
+<style>
+    /* Estilos para el footer */
+    .site-footer {
+      background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+      color: white;
+      position: relative;
+      padding-top: 80px;
+      margin-top: -1px;
+    }
+  
+    .footer-wave {
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+  
+    .footer-wave svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 50px;
+    }
+  
+    .footer-content {
+      padding: 40px 0 20px;
+    }
+  
+    .footer-main {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+  
+    .footer-about,
+    .footer-contact,
+    .footer-services,
+    .footer-newsletter {
+      flex: 1;
+      min-width: 250px;
+    }
+  
+    .footer-logo {
+      max-width: 80px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+    }
+  
+    .footer-about h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: white;
+    }
+  
+    .footer-about h2 span {
+      color: #2ecc71;
+      font-weight: 700;
+    }
+  
+    .footer-about p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+  
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+  
+    .footer-social a {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+  
+    .footer-social a:hover {
+      background: #2ecc71;
+      transform: translateY(-3px);
+    }
+  
+    .footer-contact h3,
+    .footer-services h3,
+    .footer-newsletter h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+  
+    /* Estilos para el dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+  
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: var(--white);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 10px 0;
+      z-index: 1000;
+      list-style: none;
+    }
+  
+    .dropdown-menu li {
+      padding: 0;
+    }
+  
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 20px;
+      color: var(--dark-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+  
+    .dropdown-menu a:hover {
+      background-color: rgba(93, 156, 236, 0.1);
+      color: var(--primary-color);
+      padding-left: 25px;
+    }
+  
+    /* Mostrar el dropdown al hacer hover */
+    .dropdown:hover .dropdown-menu {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+  
+    /* Pequeña animación */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    .footer-contact h3:after,
+    .footer-services h3:after,
+    .footer-newsletter h3:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: #2ecc71;
+    }
+  
+    .contact-info {
+      list-style: none;
+      padding: 0;
+    }
+  
+    .contact-info li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+    }
+  
+    .contact-info i {
+      margin-right: 10px;
+      color: #2ecc71;
+      margin-top: 3px;
+    }
+  
+    .contact-info span {
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+  
+    .footer-services ul {
+      list-style: none;
+      padding: 0;
+    }
+  
+    .footer-services li {
+      margin-bottom: 10px;
+    }
+  
+    .footer-services a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+      display: block;
+      padding: 5px 0;
+    }
+  
+    .footer-services a:hover {
+      color: #2ecc71;
+      padding-left: 5px;
+    }
+  
+    .footer-newsletter p {
+      opacity: 0.9;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+  
+    .newsletter-form {
+      display: flex;
+    }
+  
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 0.9rem;
+    }
+  
+    .newsletter-form button {
+      background: #2ecc71;
+      color: white;
+      border: none;
+      padding: 0 20px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+  
+    .newsletter-form button:hover {
+      background: #27ae60;
+    }
+  
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .footer-bottom p {
+      margin: 10px 0;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+  
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.7;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+  
+    .footer-links a:hover {
+      opacity: 1;
+      color: #2ecc71;
+    }
+  
+    .footer-links span {
+      opacity: 0.3;
+    }
+  
+    @media (max-width: 768px) {
+      .footer-main {
+        flex-direction: column;
+        gap: 40px;
+      }
+  
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+  
+      .footer-links {
+        justify-content: center;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .dropdown.open .dropdown-menu {
+        display: block;
+        position: static;
+        box-shadow: none;
+        animation: none;
+      }
+    }
+  </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const dropdowns = document.querySelectorAll(".dropdown");
+  
+      dropdowns.forEach((dropdown) => {
+        // Para dispositivos táctiles
+        dropdown.addEventListener("click", function (e) {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            this.classList.toggle("open");
+          }
+        });
+      });
+    });
+  </script>
+  
